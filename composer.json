@@ -1,0 +1,16 @@
+{
+    "name": "bank2loyalty/php-example",
+    "description": "PHP example implementation for Bank2Loyalty api",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Example\\": "src"
+        }
+    },
+    "require": {
+        "ext-json": "*",
+        "netresearch/jsonmapper": "^4.0",
+        "archin/bank2loyalty-api-php": "^0.0.3",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
