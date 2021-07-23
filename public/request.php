@@ -2,10 +2,10 @@
 
 use Bank2Loyalty\Models\Requests\PostRequest;
 use Bank2Loyalty\Security\HashValidator;
-use Bank2Loyalty\Storage\ConsumerStorage;
-use Example\Examples\MokkenActie;
+use Example\Examples\HappyFlower;
 use Example\Examples\Response;
 use Example\HashPassword;
+use Example\Storage\ConsumerStorage;
 
 error_reporting(E_ALL);
 require '../vendor/autoload.php';
@@ -30,12 +30,12 @@ try {
     $consumer = $storage->getConsumer($request->getConsumerId());
 
     if ($consumer === null) {
-        Response::json(MokkenActie::newUser());
+        Response::json(HappyFlower::newUser());
     }
 
     // Notify if not saving, allow to start saving
     if (!$consumer['isSaving']) {
-        Response::json(MokkenActie::notSaving());
+        Response::json(HappyFlower::notSaving());
     }
 
     // Increase stamp amount if saving
@@ -44,13 +44,13 @@ try {
     $storage->addOrUpdateConsumer($request->getConsumerId(), $consumer);
 
     // Check if card is full
-    if ($consumer['totalStamps'] >= MokkenActie::FULL_CARD_STAMP_AMOUNT) {
-        Response::json(MokkenActie::fullCard());
+    if ($consumer['totalStamps'] >= HappyFlower::FULL_CARD_STAMP_AMOUNT) {
+        Response::json(HappyFlower::fullCard());
     }
 
-    Response::json(MokkenActie::showSavedStamps($consumer['totalStamps']));
+    Response::json(HappyFlower::showSavedStamps($consumer['totalStamps']));
 } catch (Exception $e) {
     error_log($e);
 
-    Response::json(MokkenActie::error());
+    Response::json(HappyFlower::error());
 }

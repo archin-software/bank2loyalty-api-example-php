@@ -12,9 +12,9 @@ use Bank2Loyalty\Models\Scripting\Steps\ShowCard;
 use Bank2Loyalty\Models\Scripting\Steps\ShowMessage;
 use Bank2Loyalty\Models\Scripting\Steps\ShowYesNoQuestion;
 
-class MokkenActie
+class HappyFlower
 {
-    public const FULL_CARD_STAMP_AMOUNT = 4;
+    public const FULL_CARD_STAMP_AMOUNT = 8;
 
     public static function notSaving(): Script
     {
@@ -22,9 +22,9 @@ class MokkenActie
             ->addStep((new ScriptStep)
                 ->setShowCard((new ShowCard)
                     ->setTimeOutInSeconds(7)
-                    ->setImageTextCenter('U spaart niet voor "Rooyse" mokken')
+                    ->setImageTextCenter('You are not saving for a large tulip bouquet.')
                     ->setImageFrameMode(FrameMode::Red)
-                    ->setButtonText('Starten met sparen')
+                    ->setButtonText('Start saving')
                     ->setButtonAction((new ScriptAction)
                         ->setNextScriptStep(1)
                     )
@@ -33,17 +33,17 @@ class MokkenActie
             ->addStep((new ScriptStep)
                 ->setShowYesNoQuestion((new ShowYesNoQuestion)
                     ->setTimeOutInSeconds(10)
-                    ->setQuestion('Wilt u starten met zegels sparen voor "Rooyse" mokken?')
+                    ->setQuestion('Would you like to start saving for a large tulip bouquet?')
                     ->setYesAction((new ScriptAction)
                         ->setScriptActionResult((new ScriptActionResult)
-                            ->setKeyString('mokkenactie')
-                            ->setValueString('aan')
+                            ->setKeyString('tulipBouquet')
+                            ->setValueString('on')
                         )
                     )
                     ->setNoAction((new ScriptAction)
                         ->setScriptActionResult((new ScriptActionResult)
-                            ->setKeyString('mokkenactie')
-                            ->setValueString('uit')
+                            ->setKeyString('tulipBouquet')
+                            ->setValueString('off')
                         )
                     )
                 )
@@ -56,17 +56,17 @@ class MokkenActie
             ->addStep((new ScriptStep)
                 ->setShowYesNoQuestion((new ShowYesNoQuestion)
                     ->setTimeOutInSeconds(15)
-                    ->setQuestion('Wilt u zegeltjes sparen voor "Rooyse" mokken?')
+                    ->setQuestion('Would you like to start saving stamps for a large tulip bouquet?')
                     ->setYesAction((new ScriptAction)
                         ->setScriptActionResult((new ScriptActionResult)
-                            ->setKeyString('mokkenactie')
-                            ->setValueString('aan')
+                            ->setKeyString('tulipBouquet')
+                            ->setValueString('on')
                         )
                     )
                     ->setNoAction((new ScriptAction)
                         ->setScriptActionResult((new ScriptActionResult)
-                            ->setKeyString('mokkenactie')
-                            ->setValueString('uit')
+                            ->setKeyString('tulipBouquet')
+                            ->setValueString('off')
                         )
                     )
                 )
@@ -78,35 +78,27 @@ class MokkenActie
         return (new Script)
             ->addStep((new ScriptStep)
                 ->setShowCard((new ShowCard)
-                    ->setImageKey('4-zegels')
+                    ->setImageKey('full-card')
                     ->setTimeOutInSeconds(10)
-                    ->setImageTextCenter('U heeft een volle spaarkaart!')
+                    ->setImageTextCenter('You\'ve got a full card!')
                     ->setImageFrameMode(FrameMode::Off)
-                    ->setButtonText('Mok nu meenemen')
+                    ->setButtonText('Take bouquet now')
                     ->setButtonAction((new ScriptAction)
                         ->setScriptActionResult((new ScriptActionResult)
-                            ->setKeyString('vollekaart')
-                            ->setValueString('ingewisseld')
+                            ->setKeyString('fullCard')
+                            ->setValueString('redeemed')
                         )
                     )
                 )
             );
     }
 
-    public static function showSavedStamps(int $zegelCount): Script
+    public static function showSavedStamps(int $stampCount): Script
     {
-        $imageKey = null;
+        $imageKey = $stampCount . '-stamps';
 
-        switch ($zegelCount) {
-            case 1:
-                $imageKey = '1-zegel';
-                break;
-            case 2:
-                $imageKey = '2-zegels';
-                break;
-            case 3:
-                $imageKey = '3-zegels';
-                break;
+        if ($stampCount === self::FULL_CARD_STAMP_AMOUNT) {
+            $imageKey = 'full-card';
         }
 
         return (new Script)
@@ -131,7 +123,7 @@ class MokkenActie
                 ->setShowMessage((new ShowMessage)
                     ->setTimeOutInSeconds(5)
                     ->setMessageMode(MessageMode::Approved)
-                    ->setTextToShow('U heeft sparen voor "Rooyse" mokken UITGESCHAKELD!')
+                    ->setTextToShow('You have disabled saving for a large tulip bouquet.')
                 )
             );
     }
@@ -143,8 +135,8 @@ class MokkenActie
                 ->setShowMessage((new ShowMessage)
                     ->setTimeOutInSeconds(5)
                     ->setMessageMode(MessageMode::Celebrate)
-                    ->setTextToShow('U krijgt uw "Rooyse" mok van de cassiere')
-                    ->setSendToPos('EANcode[vollespaarkaart]')
+                    ->setTextToShow('An employee nearby will give you your large tulip bouquet.')
+                    ->setSendToPos('EANcode[fullsavingscard]')
                 )
             );
     }
@@ -156,7 +148,7 @@ class MokkenActie
                 ->setShowMessage((new ShowMessage)
                     ->setTimeOutInSeconds(7)
                     ->setMessageMode(MessageMode::Error)
-                    ->setTextToShow('Sorry, er is iets mis gegaan bij de verwerking van uw verzoek!')
+                    ->setTextToShow('Sorry, something went wrong while processing your request!')
                 )
             );
     }

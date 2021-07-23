@@ -1,10 +1,10 @@
 <?php
 
-use Example\Examples\MokkenActie;
+use Example\Examples\HappyFlower;
 use Example\Examples\Response;
 use Bank2Loyalty\Models\Requests\PostScriptResult;
 use Bank2Loyalty\Security\HashValidator;
-use Bank2Loyalty\Storage\ConsumerStorage;
+use Example\Storage\ConsumerStorage;
 use Example\HashPassword;
 
 error_reporting(E_ALL);
@@ -28,37 +28,37 @@ $storage = new ConsumerStorage();
 try {
     if (count($request->getScriptActionResults()->getActionResults()) > 0) {
         foreach ($request->getScriptActionResults()->getActionResults() as $actionResult) {
-            if ($actionResult->getKeyString() === 'mokkenactie') {
+            if ($actionResult->getKeyString() === 'tulipBouquet') {
                 // Start or stop saving
-                if ($actionResult->getValueString() === 'aan') {
+                if ($actionResult->getValueString() === 'on') {
                     $storage->addOrUpdateConsumer($request->getConsumerId(), [
                         'isSaving' => true,
                         'totalStamps' => 1,
                     ]);
 
-                    Response::json(MokkenActie::switchedOn());
-                } elseif ($actionResult->getValueString() === 'uit') {
+                    Response::json(HappyFlower::switchedOn());
+                } elseif ($actionResult->getValueString() === 'off') {
                     $storage->addOrUpdateConsumer($request->getConsumerId(), [
                         'isSaving' => false,
                         'totalStamps' => 1,
                     ]);
 
-                    Response::json(MokkenActie::switchedOff());
+                    Response::json(HappyFlower::switchedOff());
                 }
-            } elseif ($actionResult->getKeyString() === 'vollekaart' && $actionResult->getValueString() === 'ingewisseld') {
+            } elseif ($actionResult->getKeyString() === 'fullCard' && $actionResult->getValueString() === 'redeemed') {
                 // Full card
                 $storage->addOrUpdateConsumer($request->getConsumerId(), [
                     'isSaving' => true,
                     'totalStamps' => 0,
                 ]);
 
-                Response::json(MokkenActie::confirmFullCardExchange());
+                Response::json(HappyFlower::confirmFullCardExchange());
             }
         }
     }
 } catch (Exception $e) {
     error_log($e);
 
-    Response::json(MokkenActie::error());
+    Response::json(HappyFlower::error());
 }
 
