@@ -2,7 +2,7 @@
 
 use Bank2Loyalty\Models\Requests\PostRemove;
 use Bank2Loyalty\Security\HashValidator;
-use Bank2Loyalty\Storage\ConsumerStorage;
+use Example\Storage\ConsumerStorage;
 use Example\HashPassword;
 
 error_reporting(E_ALL);

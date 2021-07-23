@@ -4,7 +4,7 @@ use Example\Examples\HappyFlower;
 use Example\Examples\Response;
 use Bank2Loyalty\Models\Requests\PostScriptResult;
 use Bank2Loyalty\Security\HashValidator;
-use Bank2Loyalty\Storage\ConsumerStorage;
+use Example\Storage\ConsumerStorage;
 use Example\HashPassword;
 
 error_reporting(E_ALL);

@@ -95,33 +95,10 @@ class HappyFlower
 
     public static function showSavedStamps(int $stampCount): Script
     {
-        $imageKey = null;
+        $imageKey = $stampCount . '-stamps';
 
-        switch ($stampCount) {
-            case 1:
-                $imageKey = '1-stamp';
-                break;
-            case 2:
-                $imageKey = '2-stamps';
-                break;
-            case 3:
-                $imageKey = '3-stamps';
-                break;
-            case 4:
-                $imageKey = '4-stamps';
-                break;
-            case 5:
-                $imageKey = '5-stamps';
-                break;
-            case 6:
-                $imageKey = '6-stamps';
-                break;
-            case 7:
-                $imageKey = '7-stamps';
-                break;
-            case 8:
-                $imageKey = 'full-card';
-                break;
+        if ($stampCount === self::FULL_CARD_STAMP_AMOUNT) {
+            $imageKey = 'full-card';
         }
 
         return (new Script)

@@ -2,10 +2,10 @@
 
 use Bank2Loyalty\Models\Requests\PostRequest;
 use Bank2Loyalty\Security\HashValidator;
-use Bank2Loyalty\Storage\ConsumerStorage;
 use Example\Examples\HappyFlower;
 use Example\Examples\Response;
 use Example\HashPassword;
+use Example\Storage\ConsumerStorage;
 
 error_reporting(E_ALL);
 require '../vendor/autoload.php';
