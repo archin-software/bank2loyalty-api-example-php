@@ -16,8 +16,17 @@ use Bank2Loyalty\Models\Scripting\Steps\ShowYesNoQuestion;
 
 class HappyFlower
 {
+    /**
+     * The number of stamps needed for a full card.
+     */
     public const FULL_CARD_STAMP_AMOUNT = 8;
 
+    /**
+     * Return script if an existing consumer isn't saving yet.
+     * Ask the consumer if he wants to start saving or not.
+     *
+     * @return Script
+     */
     public static function notSaving(): Script
     {
         return (new Script)
@@ -52,6 +61,12 @@ class HappyFlower
             );
     }
 
+    /**
+     * Return script when a new consumer isn't saving yet.
+     * Ask the consumer if he wants to start saving or not.
+     *
+     * @return Script
+     */
     public static function newUser(): Script
     {
         return (new Script)
@@ -75,6 +90,11 @@ class HappyFlower
             );
     }
 
+    /**
+     * Return script for a full card, show a message and ask consumer to redeem the bouquet.
+     *
+     * @return Script
+     */
     public static function fullCard(): Script
     {
         return (new Script)
@@ -95,6 +115,13 @@ class HappyFlower
             );
     }
 
+    /**
+     * Show an image with the number of saved stamps.
+     * Every number has its own image.
+     *
+     * @param int $stampCount
+     * @return Script
+     */
     public static function showSavedStamps(int $stampCount): Script
     {
         $imageKey = $stampCount . '-stamps';
@@ -113,6 +140,12 @@ class HappyFlower
             );
     }
 
+    /**
+     * The consumer is saving, show the first stamp and set card number info.
+     *
+     * @param string $cardNumber
+     * @return Script
+     */
     public static function switchedOn(string $cardNumber): Script
     {
         return (new Script)
@@ -129,6 +162,11 @@ class HappyFlower
             );
     }
 
+    /**
+     * The consumer switched off saving, show a message.
+     *
+     * @return Script
+     */
     public static function switchedOff(): Script
     {
         return (new Script)
@@ -141,6 +179,11 @@ class HappyFlower
             );
     }
 
+    /**
+     * The consumer wants to redeem his bouquet, show a message and send a message to the cash register.
+     *
+     * @return Script
+     */
     public static function confirmFullCardExchange(): Script
     {
         return (new Script)
@@ -154,6 +197,11 @@ class HappyFlower
             );
     }
 
+    /**
+     * Something went wrong; present a general error message.
+     *
+     * @return Script
+     */
     public static function error(): Script
     {
         return (new Script)

@@ -17,12 +17,13 @@ class HashPassword
     private $hashPassword;
 
     /**
-     * HashPassword constructor.
+     * Create new HashPassword.
      */
     private function __construct()
     {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
+
         $this->hashPassword = $_ENV['HASH_PASSWORD'];
     }
 
@@ -31,9 +32,9 @@ class HashPassword
      *
      * @return HashPassword
      */
-    public static function getInstance()
+    public static function getInstance(): HashPassword
     {
-        if (self::$instance == null) {
+        if (self::$instance === null) {
             self::$instance = new HashPassword();
         }
 
