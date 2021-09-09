@@ -31,12 +31,16 @@ try {
             if ($actionResult->getKeyString() === 'tulipBouquet') {
                 // Start or stop saving
                 if ($actionResult->getValueString() === 'on') {
+                    // Just a random card number
+                    $cardNumber = uniqid();
+
                     $storage->addOrUpdateConsumer($request->getConsumerId(), [
                         'isSaving' => true,
                         'totalStamps' => 1,
+                        'cardNumber' => $cardNumber,
                     ]);
 
-                    Response::json(HappyFlower::switchedOn());
+                    Response::json(HappyFlower::switchedOn($cardNumber));
                 } elseif ($actionResult->getValueString() === 'off') {
                     $storage->addOrUpdateConsumer($request->getConsumerId(), [
                         'isSaving' => false,

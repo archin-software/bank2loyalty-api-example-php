@@ -3,6 +3,7 @@
 use Bank2Loyalty\Models\Requests\PostGetBalance;
 use Bank2Loyalty\Security\HashValidator;
 use Example\HashPassword;
+use Example\Storage\ConsumerStorage;
 
 error_reporting(E_ALL);
 require '../vendor/autoload.php';
@@ -20,5 +21,19 @@ $mapper = new JsonMapper();
 /** @var PostGetBalance $request */
 $request = $mapper->map($json, new PostGetBalance());
 
-// Just return a fake balance for now
-echo sprintf('%s punten', rand(50, 100));
+$storage = new ConsumerStorage();
+
+try {
+    // Retrieve consumer if present
+    $consumer = $storage->getConsumer($request->getConsumerId());
+
+    if ($consumer !== null) {
+        // Return balance
+        exit(sprintf('%s stamp(s)', $consumer['totalStamps']));
+    }
+} catch (Exception $e) {
+    error_log($e);
+}
+
+// Something went wrong; return empty balance
+echo '-';

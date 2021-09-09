@@ -2,8 +2,10 @@
 
 namespace Example\Examples;
 
+use Bank2Loyalty\Models\Enums\CardNumberActions;
 use Bank2Loyalty\Models\Enums\FrameMode;
 use Bank2Loyalty\Models\Enums\MessageMode;
+use Bank2Loyalty\Models\Scripting\CardNumberInfo;
 use Bank2Loyalty\Models\Scripting\Script;
 use Bank2Loyalty\Models\Scripting\ScriptAction;
 use Bank2Loyalty\Models\Scripting\ScriptActionResult;
@@ -111,9 +113,20 @@ class HappyFlower
             );
     }
 
-    public static function switchedOn(): Script
+    public static function switchedOn(string $cardNumber): Script
     {
-        return self::showSavedStamps(1);
+        return (new Script)
+            ->addStep((new ScriptStep)
+                ->setShowCard((new ShowCard)
+                    ->setImageKey('1-stamps')
+                    ->setTimeOutInSeconds(5)
+                    ->setImageFrameMode(FrameMode::Off)
+                    ->setCardNumberInfo((new CardNumberInfo)
+                        ->setCardAction(CardNumberActions::UpsertCardNumber)
+                        ->setCardNumber($cardNumber)
+                    )
+                )
+            );
     }
 
     public static function switchedOff(): Script
