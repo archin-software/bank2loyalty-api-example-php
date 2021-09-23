@@ -1,5 +1,5 @@
 {
-    "name": "bank2loyalty/php-example",
+    "name": "archin/bank2loyalty-api-php-example",
     "description": "PHP example implementation for Bank2Loyalty api",
     "type": "project",
     "autoload": {
@@ -10,7 +10,7 @@
     "require": {
         "ext-json": "*",
         "netresearch/jsonmapper": "^4.0",
-        "archin/bank2loyalty-api-php": "^0.0.4",
+        "archin/bank2loyalty-api-php": "^0.0.5",
         "vlucas/phpdotenv": "^5.3"
     }
 }
