@@ -10,7 +10,7 @@
     "require": {
         "ext-json": "*",
         "netresearch/jsonmapper": "^4.0",
-        "archin/bank2loyalty-api-php": "^0.0.5",
+        "archin/bank2loyalty-api-php": "^0.0.6",
         "vlucas/phpdotenv": "^5.3"
     }
 }

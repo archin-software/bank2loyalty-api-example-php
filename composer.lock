@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "925514f19a22f42b1eb76b2f74671e30",
+    "content-hash": "aae3d849f31bb87a1c3a8dd013fd9fca",
     "packages": [
         {
             "name": "archin/bank2loyalty-api-php",
-            "version": "0.0.5",
+            "version": "0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/archin-software/bank2loyalty-api-php.git",
-                "reference": "df363e9658b8fe1604f44876c700ed04311f1a4c"
+                "reference": "6b4715a743a1f43f3f9893229fe4c292882fed78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/archin-software/bank2loyalty-api-php/zipball/df363e9658b8fe1604f44876c700ed04311f1a4c",
-                "reference": "df363e9658b8fe1604f44876c700ed04311f1a4c",
+                "url": "https://api.github.com/repos/archin-software/bank2loyalty-api-php/zipball/6b4715a743a1f43f3f9893229fe4c292882fed78",
+                "reference": "6b4715a743a1f43f3f9893229fe4c292882fed78",
                 "shasum": ""
             },
             "require": {
@@ -41,9 +41,9 @@
             ],
             "support": {
                 "issues": "https://github.com/archin-software/bank2loyalty-api-php/issues",
-                "source": "https://github.com/archin-software/bank2loyalty-api-php/tree/0.0.5"
+                "source": "https://github.com/archin-software/bank2loyalty-api-php/tree/0.0.6"
             },
-            "time": "2021-09-22T14:17:43+00:00"
+            "time": "2021-09-23T14:35:49+00:00"
         },
         {
             "name": "elao/enum",

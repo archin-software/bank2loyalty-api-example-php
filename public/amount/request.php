@@ -35,7 +35,7 @@ $script = (new Script)
             ->setInstructionText('Please enter your amount.')
             ->setCurrencyName('EUR')
             ->setDecimalPlaces(2)
-            ->setDecimalChar('.')
+            ->setDecimalCharacter('.')
             ->setErrorMessageLanguage('en')
         )
     );
