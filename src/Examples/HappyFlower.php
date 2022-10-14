@@ -92,8 +92,8 @@ class HappyFlower
     }
 
     /**
-     * Return script when a new consumer isn't saving yet.
-     * Ask the consumer if he wants to start saving or not.
+     * Return script when a consumer is not known in the system.
+     * Start the procedure to register the user.
      *
      * @return Script
      */
