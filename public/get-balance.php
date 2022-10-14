@@ -37,7 +37,7 @@ $storage = new ConsumerStorage();
 
 try {
     // Retrieve consumer if present
-    $consumer = $storage->getConsumer($request->getConsumerId());
+    $consumer = $storage->getConsumer($request->getBank2LoyaltyInfo()->getConsumerId());
 
     if ($consumer !== null) {
         // Return balance

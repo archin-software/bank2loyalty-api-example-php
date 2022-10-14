@@ -2,7 +2,7 @@
 
 use Example\Examples\HappyFlower;
 use Example\Examples\Response;
-use Bank2Loyalty\Models\Requests\PostScriptResult;
+use Bank2Loyalty\Models\Requests\PostScriptResultV3;
 use Bank2Loyalty\Security\HashValidator;
 use Example\Storage\ConsumerStorage;
 use Example\HashPassword;
@@ -30,10 +30,10 @@ if (!HashValidator::validate($payload, HashPassword::getInstance()->getHashPassw
 // Decode JSON body
 $json = json_decode($payload);
 
-// Create mapper and map JSON to a PostScriptResult request class
+// Create mapper and map JSON to a PostScriptResultV3 request class
 $mapper = new JsonMapper();
-/** @var PostScriptResult $request */
-$request = $mapper->map($json, new PostScriptResult());
+/** @var PostScriptResultV3 $request */
+$request = $mapper->map($json, new PostScriptResultV3());
 
 // Just a simple JSON file
 $storage = new ConsumerStorage();
@@ -50,7 +50,7 @@ try {
                     $cardNumber = uniqid();
 
                     // Add or update the consumer in our storage
-                    $storage->addOrUpdateConsumer($request->getConsumerId(), [
+                    $storage->addOrUpdateConsumer($request->getBank2LoyaltyInfo()->getConsumerId(), [
                         'isSaving' => true,
                         'totalStamps' => 1,
                         'cardNumber' => $cardNumber,
@@ -60,7 +60,7 @@ try {
                     Response::json(HappyFlower::switchedOn($cardNumber));
                 } elseif ($actionResult->getValueString() === 'off') {
                     // Consumer wants to stop saving
-                    $storage->addOrUpdateConsumer($request->getConsumerId(), [
+                    $storage->addOrUpdateConsumer($request->getBank2LoyaltyInfo()->getConsumerId(), [
                         'isSaving' => false,
                         'totalStamps' => 1,
                     ]);
@@ -71,7 +71,7 @@ try {
             } elseif ($actionResult->getKeyString() === 'fullCard' && $actionResult->getValueString() === 'redeemed') {
                 // Consumer has a full card
                 // Reset the total stamps in our storage
-                $storage->addOrUpdateConsumer($request->getConsumerId(), [
+                $storage->addOrUpdateConsumer($request->getBank2LoyaltyInfo()->getConsumerId(), [
                     'isSaving' => true,
                     'totalStamps' => 0,
                 ]);
