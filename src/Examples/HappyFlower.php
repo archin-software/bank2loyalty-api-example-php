@@ -6,6 +6,7 @@ use Bank2Loyalty\Models\Enums\CardNumberActions;
 use Bank2Loyalty\Models\Enums\FrameMode;
 use Bank2Loyalty\Models\Enums\MessageMode;
 use Bank2Loyalty\Models\Scripting\CardNumberInfo;
+use Bank2Loyalty\Models\Scripting\ScannedDataOnboarding;
 use Bank2Loyalty\Models\Scripting\Script;
 use Bank2Loyalty\Models\Scripting\ScriptAction;
 use Bank2Loyalty\Models\Scripting\ScriptActionResult;
@@ -87,6 +88,21 @@ class HappyFlower
                         )
                     )
                 )
+            );
+    }
+
+    /**
+     * Return script when a new consumer isn't saving yet.
+     * Ask the consumer if he wants to start saving or not.
+     *
+     * @return Script
+     */
+    public static function startOnboarding(): Script
+    {
+        return (new Script)
+            ->setRequestOnboarding((new ScannedDataOnboarding())
+                ->setIsoCountry('nl')
+                ->setPreferredLanguages(['nl'])
             );
     }
 

@@ -36,7 +36,7 @@ $request = $mapper->map($json, new PostPosTransaction());
 $storage = new ConsumerStorage();
 
 // Retrieve consumer if present
-$consumer = $storage->getConsumer($request->getConsumerId());
+$consumer = $storage->getConsumer($request->getBank2LoyaltyInfo()->getConsumerId());
 
 // Do something with the consumer or store scanned data for analyse
 http_response_code(204);

@@ -35,11 +35,11 @@ $request = $mapper->map($json, new PostRemove());
 
 // Just a simple JSON file
 $storage = new ConsumerStorage();
-$consumer = $storage->getConsumer($request->getConsumerId());
+$consumer = $storage->getConsumer($request->getBank2LoyaltyInfo()->getConsumerId());
 
 // Remove consumer if found
 if ($consumer !== null) {
-    $storage->deleteConsumer($request->getConsumerId());
+    $storage->deleteConsumer($request->getBank2LoyaltyInfo()->getConsumerId());
 }
 
 http_response_code(204);

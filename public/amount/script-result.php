@@ -1,7 +1,7 @@
 <?php
 
 use Bank2Loyalty\Models\Enums\MessageMode;
-use Bank2Loyalty\Models\Requests\PostScriptResult;
+use Bank2Loyalty\Models\Requests\PostScriptResultV3;
 use Bank2Loyalty\Models\Scripting\Script;
 use Bank2Loyalty\Models\Scripting\ScriptStep;
 use Bank2Loyalty\Models\Scripting\Steps\ShowMessage;
@@ -31,10 +31,10 @@ if (!HashValidator::validate($payload, HashPassword::getInstance()->getHashPassw
 // Decode JSON body
 $json = json_decode($payload);
 
-// Create mapper and map JSON to a PostScriptResult request class
+// Create mapper and map JSON to a PostScriptResultV3 request class
 $mapper = new JsonMapper();
-/** @var PostScriptResult $request */
-$request = $mapper->map($json, new PostScriptResult());
+/** @var PostScriptResultV3 $request */
+$request = $mapper->map($json, new PostScriptResultV3());
 
 try {
     // Check if we've some actions to process

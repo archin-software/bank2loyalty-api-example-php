@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47349d900a95afbf3fdbcd30f35eb75a",
+    "content-hash": "4c360fc9583146ad894f489af50b5c15",
     "packages": [
         {
             "name": "archin/bank2loyalty-api-php",
-            "version": "0.0.9",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/archin-software/bank2loyalty-api-php.git",
-                "reference": "7bddb663bb14fdf2491255c55775931ea1529060"
+                "reference": "7ba062d1773010ccf05a82ac663e0e0e6cccbe32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/archin-software/bank2loyalty-api-php/zipball/7bddb663bb14fdf2491255c55775931ea1529060",
-                "reference": "7bddb663bb14fdf2491255c55775931ea1529060",
+                "url": "https://api.github.com/repos/archin-software/bank2loyalty-api-php/zipball/7ba062d1773010ccf05a82ac663e0e0e6cccbe32",
+                "reference": "7ba062d1773010ccf05a82ac663e0e0e6cccbe32",
                 "shasum": ""
             },
             "require": {
-                "elao/enum": "^1.14",
+                "elao/enum": "^1.17",
                 "ext-json": "*"
             },
             "type": "library",
@@ -41,22 +41,22 @@
             ],
             "support": {
                 "issues": "https://github.com/archin-software/bank2loyalty-api-php/issues",
-                "source": "https://github.com/archin-software/bank2loyalty-api-php/tree/0.0.9"
+                "source": "https://github.com/archin-software/bank2loyalty-api-php/tree/1.0.0"
             },
-            "time": "2022-01-06T14:31:34+00:00"
+            "time": "2022-10-14T13:34:15+00:00"
         },
         {
             "name": "elao/enum",
-            "version": "v1.16.0",
+            "version": "v1.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elao/PhpEnums.git",
-                "reference": "075003f907d87c072f041fcc14281e98c2fc494d"
+                "reference": "7d08ee23f97699abcee8c136ea1c4f3a8f8c12a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elao/PhpEnums/zipball/075003f907d87c072f041fcc14281e98c2fc494d",
-                "reference": "075003f907d87c072f041fcc14281e98c2fc494d",
+                "url": "https://api.github.com/repos/Elao/PhpEnums/zipball/7d08ee23f97699abcee8c136ea1c4f3a8f8c12a6",
+                "reference": "7d08ee23f97699abcee8c136ea1c4f3a8f8c12a6",
                 "shasum": ""
             },
             "require": {
@@ -66,23 +66,24 @@
             },
             "require-dev": {
                 "api-platform/core": "^2.5.1",
+                "doctrine/annotations": "^1.9",
                 "doctrine/data-fixtures": "^1.2",
                 "doctrine/doctrine-bundle": "^1.12|^2.0",
                 "doctrine/orm": "^2.4",
                 "ext-pdo_sqlite": "*",
-                "friendsofphp/php-cs-fixer": "^3.0",
                 "nelmio/alice": "^3.0",
-                "symfony/browser-kit": "^4.4|^5.1",
-                "symfony/console": "^4.4|^5.1",
-                "symfony/css-selector": "^4.4|^5.1",
-                "symfony/form": "^4.4|^5.1",
-                "symfony/framework-bundle": "^4.4|^5.1",
-                "symfony/phpunit-bridge": "^5.3",
-                "symfony/serializer": "^4.4|^5.1",
-                "symfony/translation": "^4.4|^5.1",
-                "symfony/twig-bundle": "^4.4|^5.1",
-                "symfony/validator": "^4.4|^5.1",
-                "symfony/yaml": "^4.4|^5.1",
+                "symfony/browser-kit": "^4.4|^5.1|^6.0",
+                "symfony/console": "^4.4|^5.1|^6.0",
+                "symfony/css-selector": "^4.4|^5.1|^6.0",
+                "symfony/finder": "^4.4|^5.1|^6.0",
+                "symfony/form": "^4.4|^5.1|^6.0",
+                "symfony/framework-bundle": "^4.4|^5.1|^6.0",
+                "symfony/phpunit-bridge": "^5.3|^6.0",
+                "symfony/serializer": "^4.4|^5.1|^6.0",
+                "symfony/translation": "^4.4|^5.1|^6.0",
+                "symfony/twig-bundle": "^4.4|^5.1|^6.0",
+                "symfony/validator": "^4.4|^5.1|^6.0",
+                "symfony/yaml": "^4.4|^5.1|^6.0",
                 "twig/twig": "^2.12|^3.0"
             },
             "bin": [
@@ -91,16 +92,17 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev"
+                    "dev-master": "1.x-dev",
+                    "dev-1.x": "1.x-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Elao\\Enum\\": "src/"
-                },
                 "files": [
                     "src/Bridge/Symfony/VarDumper/Resources/register_caster.php"
-                ]
+                ],
+                "psr-4": {
+                    "Elao\\Enum\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -126,7 +128,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Elao/PhpEnums/issues",
-                "source": "https://github.com/Elao/PhpEnums/tree/v1.16.0"
+                "source": "https://github.com/Elao/PhpEnums/tree/v1.17.1"
             },
             "funding": [
                 {
@@ -134,7 +136,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-26T14:11:45+00:00"
+            "time": "2022-01-19T18:32:17+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -478,16 +480,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.23.1",
+            "version": "v1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be"
+                "reference": "cfa0ae98841b9e461207c13ab093d76b0fa7bace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/1100343ed1a92e3a38f9ae122fc0eb21602547be",
-                "reference": "1100343ed1a92e3a38f9ae122fc0eb21602547be",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/cfa0ae98841b9e461207c13ab093d76b0fa7bace",
+                "reference": "cfa0ae98841b9e461207c13ab093d76b0fa7bace",
                 "shasum": ""
             },
             "require": {
@@ -496,7 +498,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.23-dev"
+                    "dev-main": "1.26-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -504,12 +506,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -541,7 +543,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.26.0"
             },
             "funding": [
                 {
@@ -557,7 +559,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-28T13:41:28+00:00"
+            "time": "2022-05-10T07:21:04+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -648,5 +650,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

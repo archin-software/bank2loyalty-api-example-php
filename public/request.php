@@ -1,6 +1,6 @@
 <?php
 
-use Bank2Loyalty\Models\Requests\PostRequest;
+use Bank2Loyalty\Models\Requests\RequestV3;
 use Bank2Loyalty\Security\HashValidator;
 use Example\Examples\HappyFlower;
 use Example\Examples\Response;
@@ -32,15 +32,19 @@ $json = json_decode($payload);
 
 // Create mapper and map JSON to a PostRequest request class
 $mapper = new JsonMapper();
-/** @var PostRequest $request */
-$request = $mapper->map($json, new PostRequest());
+/** @var RequestV3 $request */
+$request = $mapper->map($json, new RequestV3());
 
 // Just a simple JSON file
 $storage = new ConsumerStorage();
 
 try {
     // Retrieve consumer if present
-    $consumer = $storage->getConsumer($request->getConsumerId());
+    if (!$request->getBank2LoyaltyInfo()) {
+        Response::json(HappyFlower::startOnboarding());
+    }
+
+    $consumer = $storage->getConsumer($request->getBank2LoyaltyInfo()->getConsumerId());
 
     if ($consumer === null) {
         // Consumer isn't know, return 'new user' step
@@ -56,7 +60,7 @@ try {
     $consumer['totalStamps'] += 1;
 
     // Add or update the consumer in our storage
-    $storage->addOrUpdateConsumer($request->getConsumerId(), $consumer);
+    $storage->addOrUpdateConsumer($request->getBank2LoyaltyInfo()->getConsumerId(), $consumer);
 
     // Check if card is full
     if ($consumer['totalStamps'] >= HappyFlower::FULL_CARD_STAMP_AMOUNT) {
